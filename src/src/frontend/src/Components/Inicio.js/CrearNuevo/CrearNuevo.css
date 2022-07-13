@@ -1,0 +1,17 @@
+.CrearNuevoContainer{
+    display: flex;
+    flex-direction: row;
+    width : 100%;
+    height : 100vh;
+    background-color: black;
+}
+
+.FormContainer{
+    width: 60%;
+    height: 100vh;
+}
+
+
+.FormContainer h1, h2, p{
+    color : white
+}

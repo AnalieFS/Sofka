@@ -9,6 +9,7 @@ module.exports = class NaveNoTripulada extends NavesInterfaz{
         this._planetas = planetas || false;
     }
 
+    // Métodos get y set de atributos
     get planetas(){
         return this._planetas;
     }

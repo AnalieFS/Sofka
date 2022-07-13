@@ -3,14 +3,15 @@ const morgan = require("morgan")
 const mysql = require("mysql2");
 const conn = require("express-myconnection");
 const naveRoutes = require("../src/Routes/nave");
-
+var cors = require('cors')
 
 const app = express();
 
 //settings
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 5000);
 
 //Middlewares
+app.use(cors());
 app.use(morgan("dev"));
 app.use(conn(mysql, {
     host : "0.0.0.0",
