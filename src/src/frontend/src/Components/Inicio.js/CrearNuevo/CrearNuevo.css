@@ -7,11 +7,88 @@
 }
 
 .FormContainer{
-    width: 60%;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
     height: 100vh;
+    align-items: center;
+    justify-content: center;
 }
 
+.FormBanner{
+    display: flex;
+    flex-direction: column;
+    background-image: url(./1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-x: -400px;
+    width: 50%;
+    height: 100vh;
+    align-items: center;
+}
 
-.FormContainer h1, h2, p{
-    color : white
+.FormContainer h1, h2{
+    color : rgb(255, 218, 95);
+    text-align: center;
+    font-size: 2rem;
+}
+
+.FormContainer h2{
+    font-size: 1rem;
+}
+
+.inventarioButton{
+    display: flex;
+    position: absolute;
+    width:130px;
+    height: 40px;
+    top:50px;
+    border : 1px solid rgb(255, 218, 95);
+    cursor: default;
+    transition-duration: 0.5s;
+}
+
+.inventarioButton:hover, .inventarioButton:focus, .inventarioButton:active{
+    background-color: rgb(36, 36, 36);
+    width:120px;
+}
+
+.inventarioButton h3{
+    color:rgb(255, 218, 95);
+    text-align: center;
+    margin: auto;
+    font-weight: 100;
+}
+.FormContainer p{
+    color : white;
+    text-align: justify;
+    width:65%;
+    
+}
+
+.Form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Form label{
+    color:white;
+    text-align: center;
+    margin: 10px 0px;
+    
+}
+
+.Form select{
+    text-align: center;
+    width:90%
+}
+.Form input[type=submit]{
+    margin-top: 20px;
+    width:25%
+}
+
+.Form input[type=text]{
+    text-align: center;
+    width:90%
 }
