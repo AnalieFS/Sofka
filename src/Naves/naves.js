@@ -1,15 +1,29 @@
 class Naves{
-    constructor(nombre, mision, tripulacion){
-        this.nombre = nombre;
-        this.mision = mision;
-        this.tripulacion = tripulacion;
+    constructor(nombre, tripulacion){
+        this._nombre = nombre;
+        this._tripulacion = tripulacion;
     }
+
+    get nombre(){
+        return this._nombre;
+    }
+    set nombre(nombre){
+        this._nombre = nombre;
+    }
+
+    get tripulacion(){
+        return this._tripulacion;
+    }
+    set tripulacion(tripulacion){
+        this._tripulacion = tripulacion;
+    }
+
     crearNave(){
         if(!tripulacion && this.mision=="orbital"){
             return 1
         }
         else if(!tripulacion && this.mision=="celeste"){
-            return 2
+            return new NaveNoTripulada();
         }
         else if(tripulacion && this.mision=="experimental"){
             return 3
@@ -21,6 +35,7 @@ class Naves{
 
     combustible();
     distanciaOrbital();
+    tipo();
 
     getNave(){
         return this.crearNave;
