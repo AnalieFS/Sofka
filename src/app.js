@@ -27,5 +27,5 @@ app.use("/", naveRoutes);
 
 //Iniciando server
 app.listen(app.get('port'), () => {
-    console.log("Server on adress http://localhost:"+3000);
+    console.log("Server on address http://localhost:"+3000);
 });
