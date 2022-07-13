@@ -3,10 +3,10 @@ const NaveSofkiana = require("./TipoNave/nave.sofkiana");
 const NaveTripulada = require("./TipoNave/nave.tripulada");
 const VehiculoLanzadera = require("./TipoNave/vehiculo.lanzadera");
 
-class Naves{
+module.exports = class Naves{
     constructor(nombre, mision, tripulacion){
         this._nombre = nombre;
-        this._tripulacion = tripulacion;
+        this._tripulacion = tripulacion || "0";
         this._mision = mision;
     }
 
@@ -25,21 +25,21 @@ class Naves{
     }
 
     get mision(){
-        return this._nmision;
+        return this._mision;
     }
     set mision(mision){
         this._mision = mision;
     }
 
     crearNave(){
-        if(!tripulacion && this.mision=="orbital"){
+        if(this._tripulacion === "0" && this.mision=="Lanzar carga"){
             return new VehiculoLanzadera(this._nombre, this._mision);
         }
-        else if(!tripulacion && this.mision=="celeste"){
+        else if(this._tripulacion === "0" && this.mision=="Estudio de cuerpos celestes"){
             return new NaveNoTripulada(this._nombre, this._mision);
         }
-        else if(tripulacion && this.mision=="experimental"){
-            return new NaveTripulada(this._nombre, this._tripulacion, this._mision);
+        else if(this._tripulacion && this.mision=="Experimentos espaciales"){
+            return new NaveTripulada(this._nombre, this._mision, this._tripulacion);
         }
         else{
             return new NaveSofkiana(this._nombre, this._tripulacion, this._mision);
@@ -47,6 +47,6 @@ class Naves{
     };
 
     getNave(){
-        return this.crearNave.informacionDeNave();
+        return this.crearNave().informacionDeNave();
     };
 }

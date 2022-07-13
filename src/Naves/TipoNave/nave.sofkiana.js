@@ -6,8 +6,8 @@ module.exports = class NaveSofkiana extends NavesInterfaz{
         super(); //contructor clase padre
         this._nombre = nombre;
         this._mision = mision;
-        this._tripulacion = tripulacion;
-        this._quiz = quiz;
+        this._tripulacion = tripulacion || 1;
+        this._quiz = quiz || false;
     }
 
     get quiz(){
@@ -65,7 +65,7 @@ module.exports = class NaveSofkiana extends NavesInterfaz{
             "tipo" : this.tipo(), 
             "mision" : this._mision, 
             "combustible" : this.combustible(), 
-            "distancia orbital" : this.distanciaOrbital(), 
+            "distancia" : this.distanciaOrbital(), 
             "quiz" : this.probabilidadEntrada()
         };
     }

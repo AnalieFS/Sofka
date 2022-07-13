@@ -1,5 +1,6 @@
 module.exports = class NavesInterfaz {
-    combustible();
-    distanciaOrbital();
-    tipo();
+    combustible(){};
+    distanciaOrbital(){};
+    tipo(){};
+    informacionDeNave(){};
 }

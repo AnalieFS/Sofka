@@ -13,11 +13,11 @@ app.set('port', process.env.PORT || 3000);
 //Middlewares
 app.use(morgan("dev"));
 app.use(conn(mysql, {
-    host : "localhost",
-    user : "root",
-    password : "1234",
+    host : "0.0.0.0",
+    user : "otro",
+    password : "123456",
     port : 3306,
-    database : "SOFKASPACESTATION"
+    database : "sofkaspacestation"
 }, "single"));
 app.use(express.json());
 

@@ -6,7 +6,7 @@ module.exports = class VehiculoLanzadera extends NavesInterfaz{
         super(); //contructor clase padre
         this._nombre = nombre;
         this._mision = mision;
-        this._carga = carga;
+        this._carga = carga || "satelite";
     }
 
     get nombre(){
@@ -31,15 +31,15 @@ module.exports = class VehiculoLanzadera extends NavesInterfaz{
     }
 
     combustible(){
-        return "Combustión química";
+        return "Combustion quimica";
     }
 
     distanciaOrbital(){
-        return "Órbita baja";
+        return "Orbita baja";
     }
     
     tipo(){
-        return "Vehículo lanzadera";
+        return "Vehiculo lanzadera";
     }
 
     informacionDeNave(){
@@ -48,7 +48,7 @@ module.exports = class VehiculoLanzadera extends NavesInterfaz{
             "tipo" : this.tipo(), 
             "mision" : this._mision, 
             "combustible" : this.combustible(), 
-            "distancia orbital" : this.distanciaOrbital(), 
+            "distancia" : this.distanciaOrbital(), 
             "carga" : this._carga
         };
     }

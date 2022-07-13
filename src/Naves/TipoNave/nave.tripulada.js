@@ -6,7 +6,7 @@ module.exports = class NaveTripulada extends NavesInterfaz{
         super(); //contructor clase padre
         this._nombre = nombre;
         this._mision = mision;
-        this._tripulacion = tripulacion;
+        this._tripulacion = tripulacion || 1;
     }
 
     get nombre(){
@@ -17,7 +17,7 @@ module.exports = class NaveTripulada extends NavesInterfaz{
     }
 
     get mision(){
-        return this._nmision;
+        return this._mision;
     }
     set mision(mision){
         this._mision = mision;
@@ -31,11 +31,11 @@ module.exports = class NaveTripulada extends NavesInterfaz{
     }
 
     combustible(){
-        return "Combustión química";
+        return "Combustion quimica";
     }
 
     distanciaOrbital(){
-        return "Órbita baja";
+        return "Orbita baja";
     }
 
     tipo(){
@@ -48,7 +48,7 @@ module.exports = class NaveTripulada extends NavesInterfaz{
             "tipo" : this.tipo(), 
             "mision" : this._mision, 
             "combustible" : this.combustible(), 
-            "distancia orbital" : this.distanciaOrbital(), 
+            "distancia" : this.distanciaOrbital(), 
             "tripulacion" : this._tripulacion
         };
     }

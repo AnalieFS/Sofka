@@ -2,11 +2,11 @@ const NavesInterfaz = require("../naves.interfaz");
 
 module.exports = class NaveNoTripulada extends NavesInterfaz{
     
-    constructor(nombre, mision){
+    constructor(nombre, mision, planetas){
         super(); //contructor clase padre
-        this._planetas = true;
         this._nombre = nombre;
         this._mision = mision;
+        this._planetas = planetas || false;
     }
 
     get planetas(){
@@ -25,14 +25,14 @@ module.exports = class NaveNoTripulada extends NavesInterfaz{
     }
 
     get mision(){
-        return this._nmision;
+        return this._mision;
     }
     set mision(mision){
         this._mision = mision;
     }
 
     combustible(){
-        return "Celdas fotovoltáicas";
+        return "Celdas fotovoltaicas";
     }
 
     distanciaOrbital(){
@@ -43,9 +43,9 @@ module.exports = class NaveNoTripulada extends NavesInterfaz{
         return "Nave no tripulada";
     }
 
-    visitarPlaneta();
+    visitarPlaneta(){};
 
-    abandonarPlaneta();
+    abandonarPlaneta(){};
 
     informacionDeNave(){
         return {
@@ -53,7 +53,7 @@ module.exports = class NaveNoTripulada extends NavesInterfaz{
             "tipo" : this.tipo(), 
             "mision" : this._mision, 
             "combustible" : this.combustible(), 
-            "distancia orbital" : this.distanciaOrbital(), 
+            "distancia" : this.distanciaOrbital(), 
             "planetas" : this._planetas
         };
     }
