@@ -1,10 +1,27 @@
-class VehiculoLanzadera extends Naves{
+const NavesInterfaz = require("../naves.interfaz");
+
+module.exports = class VehiculoLanzadera extends NavesInterfaz{
     
     constructor(nombre, mision, carga){
-        super(nombre, mision); //contructor clase padre
+        super(); //contructor clase padre
+        this._nombre = nombre;
+        this._mision = mision;
         this._carga = carga;
     }
 
+    get nombre(){
+        return this._nombre;
+    }
+    set nombre(nombre){
+        this._nombre = nombre;
+    }
+
+    get mision(){
+        return this._nmision;
+    }
+    set mision(mision){
+        this._mision = mision;
+    }
     get carga(){
         return this._carga;
     }

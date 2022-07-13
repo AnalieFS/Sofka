@@ -1,8 +1,12 @@
-class NaveNoTripulada extends Naves{
+const NavesInterfaz = require("../naves.interfaz");
+
+module.exports = class NaveNoTripulada extends NavesInterfaz{
     
     constructor(nombre, mision){
-        super(nombre, mision); //contructor clase padre
+        super(); //contructor clase padre
         this._planetas = true;
+        this._nombre = nombre;
+        this._mision = mision;
     }
 
     get planetas(){
@@ -11,6 +15,20 @@ class NaveNoTripulada extends Naves{
 
     set planetas(planetas){
         this._planetas = planetas;
+    }
+
+    get nombre(){
+        return this._nombre;
+    }
+    set nombre(nombre){
+        this._nombre = nombre;
+    }
+
+    get mision(){
+        return this._nmision;
+    }
+    set mision(mision){
+        this._mision = mision;
     }
 
     combustible(){

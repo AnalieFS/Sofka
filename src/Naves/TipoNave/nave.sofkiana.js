@@ -1,8 +1,13 @@
-class NaveSofkiana extends Naves{
+const NavesInterfaz = require("../naves.interfaz");
+
+module.exports = class NaveSofkiana extends NavesInterfaz{
     
-    constructor(nombre, mision){
-        super(nombre, mision); //contructor clase padre
-        this._quiz = true;
+    constructor(nombre, mision, tripulacion, quiz){
+        super(); //contructor clase padre
+        this._nombre = nombre;
+        this._mision = mision;
+        this._tripulacion = tripulacion;
+        this._quiz = quiz;
     }
 
     get quiz(){
@@ -11,6 +16,27 @@ class NaveSofkiana extends Naves{
 
     set quiz(quiz){
         this._quiz = quiz;
+    }
+
+    get nombre(){
+        return this._nombre;
+    }
+    set nombre(nombre){
+        this._nombre = nombre;
+    }
+
+    get mision(){
+        return this._nmision;
+    }
+    set mision(mision){
+        this._mision = mision;
+    }
+
+    get tripulacion(){
+        return this._tripulacion;
+    }
+    set tripulacion(tripulacion){
+        this._tripulacion = tripulacion;
     }
 
     combustible(){
