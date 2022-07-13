@@ -20,16 +20,16 @@ class Naves{
 
     crearNave(){
         if(!tripulacion && this.mision=="orbital"){
-            return 1
+            return new VehiculoLanzadera();
         }
         else if(!tripulacion && this.mision=="celeste"){
             return new NaveNoTripulada();
         }
         else if(tripulacion && this.mision=="experimental"){
-            return 3
+            return new NaveTripulada();
         }
         else{
-            return 4
+            return new NaveSofkiana();
         }    
     };
 
@@ -38,6 +38,6 @@ class Naves{
     tipo();
 
     getNave(){
-        return this.crearNave;
+        return this.crearNave.informacionDeNave();
     };
 }
