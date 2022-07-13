@@ -20,7 +20,7 @@ class VehiculoLanzadera extends Naves{
     distanciaOrbital(){
         return "Órbita baja";
     }
-
+    
     tipo(){
         return "Vehículo lanzadera";
     }

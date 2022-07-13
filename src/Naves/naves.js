@@ -35,7 +35,9 @@ class Naves{
 
     combustible();
     distanciaOrbital();
-    tipo();
+    tipo(){
+        return "No identificado"
+    };
 
     getNave(){
         return this.crearNave.informacionDeNave();
