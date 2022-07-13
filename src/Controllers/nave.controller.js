@@ -46,31 +46,39 @@ controller.postNave = (req, res) => {
   req.getConnection((err, conn) => {
     conn.query("INSERT INTO naves set ?", [dataSet1], (err, nave) => {
       if (!err) {
-        conn.query("INSERT INTO naves_config set ?", [dataSet2], (err, nave) => {
-            console.log("Nave 2",nave)
-            if(nave)
-                   {
-                    console.log("NO VACIO")
-                   }
+        //si la query es exitosa inserta el objeto en la tabla naves_config
+        conn.query(
+          "INSERT INTO naves_config set ?",
+          [dataSet2],
+          (err, nave) => {
             if (err) {
-                console.log("HANDLE ERROR")
               res.json(err);
             }
+            //si la query es exitosa retorna las filas afectadas
             res.json(nave);
-
-          });
-      }
-      else {
-        if (err.code === 'ER_DUP_ENTRY'){
-            res.json({"message" : "Ya existe"});
-
+          }
+        );
+      } else {
+        //Control de duplicados
+        if (err.code === "ER_DUP_ENTRY") {
+          res.json({ message: "Ya existe" });
         }
       }
-      //si la query es exitosa inserta el objeto en la tabla naves_config
+    });
+  });
+};
 
-    
-      //si la query es exitosa retorna las filas afectadas
-      
+controller.getByName = (req, res) => {
+  const getName = req.query;
+  const name = Object.values(getName);
+  //Estableciendo conexión
+  req.getConnection((err, conn) => {
+    conn.query("SELECT * FROM naves WHERE nombre=?", name, (err, naves) => {
+      if (err) {
+        res.json(err);
+      }
+      //si la query es exitosa retorna la nave
+      res.json(naves);
     });
   });
 };
@@ -79,7 +87,22 @@ controller.getByFilter = (req, res) => {
   const filter = req.query;
   const keys = Object.keys(filter);
   const values = Object.values(filter);
-  console.log("keys", keys);
-  console.log("values", values);
+
+  query = "SELECT * FROM naves_config WHERE "
+  for(let i=0; i<values.length; i++){
+    if(i<values.length-1)
+    query = query + `${keys[i]} = "${values[i]}" AND `
+    else
+    query = query + `${keys[i]} = "${values[i]}"`
+  }
+  req.getConnection((err, conn) => {
+    conn.query(query, (err, naves) => {
+      if (err) {
+        res.json(err);
+      }
+      //si la query es exitosa retorna la nave
+      res.json(naves);
+    });
+  });
 };
 module.exports = controller;
