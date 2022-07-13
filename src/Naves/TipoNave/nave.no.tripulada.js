@@ -36,7 +36,7 @@ module.exports = class NaveNoTripulada extends NavesInterfaz{
     }
 
     distanciaOrbital(){
-        return "Cada vez más lejos";
+        return "Cada vez mas lejos";
     }
 
     tipo(){

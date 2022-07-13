@@ -1,4 +1,5 @@
 const Naves = require("../Naves/naves");
+const NaveSofkiana = require("../Naves/TipoNave/nave.sofkiana");
 
 const controller = {};
 
@@ -12,13 +13,17 @@ controller.getAll = (req, res) => {
       //si la query es exitosa retorna todas las naves de la tabla
       res.json(naves);
     });
+    if (err)
+      res.json({ message: err || "Ha ocurrido un error con el inventario" });
   });
 };
 
 controller.postNave = (req, res) => {
+  //Creación de objeto nave y obtención de su tipo según características
   let nave = new Naves(req.body.nombre, req.body.mision, req.body.tripulacion);
   let crearNave = nave.getNave();
 
+  //Asignando variables según corresponda
   switch (crearNave.tipo) {
     case "Nave no tripulada": {
       crearNave.planetas = req.body.planetas;
@@ -27,9 +32,17 @@ controller.postNave = (req, res) => {
       crearNave.carga = req.body.carga;
     }
     case "Nave Sofkiana": {
-      crearNave.quiz = req.body.quiz || "0";
+      let Sofkiana = new NaveSofkiana(
+        req.body.nombre,
+        req.body.mision,
+        req.body.tripulacion,
+        req.body.quiz
+      );
+      crearNave.quiz = Sofkiana.probabilidadEntrada();
     }
   }
+
+  //Datos a ingresar en tabla naves
   const dataSet1 = {
     nombre: crearNave.nombre,
     mision: crearNave.mision,
@@ -37,10 +50,8 @@ controller.postNave = (req, res) => {
     tripulacion: crearNave.tripulacion || "0",
   };
 
-  console.log("DT1", dataSet1);
-  console.log("NAVE CREADA", crearNave);
+  //Datos a ingresar en tabla naves_config
   const dataSet2 = crearNave;
-  console.log("DT2", dataSet2);
 
   //Estableciendo conexión
   req.getConnection((err, conn) => {
@@ -59,12 +70,17 @@ controller.postNave = (req, res) => {
           }
         );
       } else {
-        //Control de duplicados
+        //Control de naves duplicadas
         if (err.code === "ER_DUP_ENTRY") {
           res.json({ message: "Ya existe" });
         }
       }
     });
+    if (err) {
+      res.json({
+        message: err || "Ha ocurrido un error con la creación de la nave",
+      });
+    }
   });
 };
 
@@ -80,6 +96,9 @@ controller.getByName = (req, res) => {
       //si la query es exitosa retorna la nave
       res.json(naves);
     });
+    if (err) {
+      res.json({ message: err || "Ha ocurrido un error con la búsqueda" });
+    }
   });
 };
 
@@ -88,21 +107,28 @@ controller.getByFilter = (req, res) => {
   const keys = Object.keys(filter);
   const values = Object.values(filter);
 
-  query = "SELECT * FROM naves_config WHERE "
-  for(let i=0; i<values.length; i++){
-    if(i<values.length-1)
-    query = query + `${keys[i]} = "${values[i]}" AND `
-    else
-    query = query + `${keys[i]} = "${values[i]}"`
+  query = "SELECT * FROM naves_config WHERE ";
+
+  //Se recorren los valores del filtro para ingresarlos en la búsqueda
+  for (let i = 0; i < values.length; i++) {
+    if (i < values.length - 1)
+      query = query + `${keys[i]} = "${values[i]}" AND `;
+    else query = query + `${keys[i]} = "${values[i]}"`;
   }
   req.getConnection((err, conn) => {
     conn.query(query, (err, naves) => {
       if (err) {
         res.json(err);
       }
-      //si la query es exitosa retorna la nave
+      //si la query es exitosa retorna las naves que cumplan el filtro
       res.json(naves);
     });
+    if (err) {
+      res.json({
+        message: err || "Ha ocurrido un error con el filtro de búsqueda",
+      });
+    }
   });
 };
+
 module.exports = controller;

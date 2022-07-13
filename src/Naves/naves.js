@@ -6,8 +6,8 @@ const VehiculoLanzadera = require("./TipoNave/vehiculo.lanzadera");
 module.exports = class Naves{
     constructor(nombre, mision, tripulacion){
         this._nombre = nombre;
-        this._tripulacion = tripulacion || "0";
         this._mision = mision;
+        this._tripulacion = tripulacion || "0";        
     }
 
     get nombre(){
@@ -17,19 +17,19 @@ module.exports = class Naves{
         this._nombre = nombre;
     }
 
-    get tripulacion(){
-        return this._tripulacion;
-    }
-    set tripulacion(tripulacion){
-        this._tripulacion = tripulacion;
-    }
-
     get mision(){
         return this._mision;
     }
     set mision(mision){
         this._mision = mision;
     }
+
+    get tripulacion(){
+        return this._tripulacion;
+    }
+    set tripulacion(tripulacion){
+        this._tripulacion = tripulacion;
+    }    
 
     crearNave(){
         if(this._tripulacion === "0" && this.mision=="Lanzar carga"){
@@ -42,7 +42,7 @@ module.exports = class Naves{
             return new NaveTripulada(this._nombre, this._mision, this._tripulacion);
         }
         else{
-            return new NaveSofkiana(this._nombre, this._tripulacion, this._mision);
+            return new NaveSofkiana(this._nombre, this._mision, this._tripulacion,);
         }    
     };
 

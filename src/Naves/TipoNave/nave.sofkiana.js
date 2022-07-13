@@ -2,20 +2,22 @@ const NavesInterfaz = require("../naves.interfaz");
 
 module.exports = class NaveSofkiana extends NavesInterfaz{
     
-    constructor(nombre, mision, tripulacion, quiz){
+    constructor(nombre, mision, tripulacion, quizNumber){
         super(); //contructor clase padre
         this._nombre = nombre;
         this._mision = mision;
         this._tripulacion = tripulacion || 1;
-        this._quiz = quiz || false;
+        this._quizNumber = quizNumber || 1;
+        this.probabilidadEntrada();
     }
 
-    get quiz(){
+    // Métodos get y set de atributos
+    get quizNumber(){
         return this._quiz;
     }
 
-    set quiz(quiz){
-        this._quiz = quiz;
+    set quizNumber(quizNumber){
+        this._quizNumber = quizNumber;
     }
 
     get nombre(){
@@ -52,7 +54,7 @@ module.exports = class NaveSofkiana extends NavesInterfaz{
     }
 
     probabilidadEntrada(){
-        switch(this._quiz){
+        switch(this._quizNumber){
             case 1 : return "Apenas comienzas"
             case 2 : return "A medio camino"
             case 3 : return "Espera los resultados"

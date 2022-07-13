@@ -9,6 +9,7 @@ module.exports = class NaveTripulada extends NavesInterfaz{
         this._tripulacion = tripulacion || 1;
     }
 
+    // Métodos get y set de atributos
     get nombre(){
         return this._nombre;
     }

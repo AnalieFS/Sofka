@@ -9,6 +9,7 @@ module.exports = class VehiculoLanzadera extends NavesInterfaz{
         this._carga = carga || "satelite";
     }
 
+    // Métodos get y set de atributos
     get nombre(){
         return this._nombre;
     }
