@@ -49,6 +49,14 @@ Ver archivo.
 ### Instalación 📝
 
 $ git clone https://github.com/AnalieFS/Sofka.git <br/>
-$ cd ../path/to/the/file <br/>
-$ npm install <br/>
-$ npm start <br/>
+$ cd ./Sofka <br/>
+$ npm i <br/>
+$ cd ./Sofka/src/src/frontend <br/>
+$ npm i <br/>
+
+### Ejecución 📝
+
+Para ejecutar el proyecto en la máquina local y ejecutar pruebas se utiliza el módulo 'concurrently' que nos permite para versión de desarrollo ejecutar el backend y el frontend simultaneamente para ello se deben ejecutar los siguientes comandos en consola: <br/>
+
+$ cd ./Sofka<br/>
+$ npm run dev <br/>
