@@ -47,8 +47,12 @@ Ver archivo.
 </pre>
 
 ### Instalación 📝
+Para clonar este repositorio: <br/>
 
 $ git clone https://github.com/AnalieFS/Sofka.git <br/>
+
+Se deben instalar los módulos tanto del frontend como del backend del siguiente modo: <br/>
+
 $ cd ./Sofka <br/>
 $ npm i <br/>
 $ cd ./Sofka/src/src/frontend <br/>
