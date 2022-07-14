@@ -34,12 +34,12 @@
 
 .Tabla{
     display: flex;
-    width : 90%;
     height: fit-content;
     background-color: rgb(61, 61, 61);
     border-radius: 24px;
     margin-top: 20px;
     margin-bottom: 50px;
+    width:100%;
     overflow-x: auto;
     justify-content: center;
 }
@@ -267,4 +267,16 @@ color: rgb(255, 218, 95);
     color:white;
     font-size:1rem;
     margin-bottom: 22px;
+}
+
+@media screen and (max-width: 1023px) {
+    #filtroItem{
+        width:40%
+    }
+
+    .Tabla{
+        display:flex;
+        width: 80%;
+        justify-content: flex-start
+    }
 }
