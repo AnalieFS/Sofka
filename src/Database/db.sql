@@ -40,23 +40,24 @@ CREATE TABLE IF NOT EXISTS `naves_config` (
   `planetas` varchar(50) DEFAULT NULL,
   `quiz` varchar(50) DEFAULT NULL,
   `carga` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id_registro`)
+  PRIMARY KEY (`id_registro`),
+  UNIQUE KEY `nombre` (`nombre`)
 );
 
 -- Volcando datos para la tabla sofkaspacestation.naves_config: ~12 rows (aproximadamente)
-INSERT INTO `naves_config` (`id_registro`, `id_nave`, `nombre`, `mision`, `tripulacion`, `tipo`, `combustible`, `distancia`, `planetas`, `quiz`, `carga`) VALUES
-	(1, 1, 'Orion', 'Estudio de cuerpos celestes', NULL, 'Nave no tripulada', 'Celdas fotovoltaicas', 'Cada vez más lejos', 'Sí', NULL, NULL),
-	(2, 2, 'Sonda Cass', 'Estudio de cuerpos celestes', NULL, 'Nave no tripulada', 'Celdas fotovoltaicas', 'Cada vez más lejos', 'No', NULL, NULL),
-	(3, 3, 'Bruno', 'Estudio de cuerpos celestes', NULL, 'Nave no tripulada', 'Celdas fotovoltaicas', 'Cada vez más lejos', 'Sí', NULL, NULL),
-	(4, 4, 'SunShine', 'Lanzar carga', NULL, 'Vehiculo lanzadera', 'Combustion quimica', 'Orbita baja', NULL, NULL, 'Satelite'),
-	(5, 5, 'Roosette', 'Lanzar carga', NULL, 'Vehiculo lanzadera', 'Combustion quimica', 'Orbita baja', NULL, NULL, 'Sonda'),
-	(6, 6, 'CrispStation', 'Lanzar carga', NULL, 'Vehiculo lanzadera', 'Combustion quimica', 'Orbita baja', NULL, NULL, 'Nave'),
-	(7, 7, 'HumanPropulsor', 'Experimentos espaciales', '5', 'Nave tripulada', 'Combustion quimica', 'Orbita baja', NULL, NULL, NULL),
-	(8, 8, 'Infinite', 'Experimentos espaciales', '2', 'Nave tripulada', 'Combustion quimica', 'Orbita baja', NULL, NULL, NULL),
-	(9, 9, 'Orianna', 'Experimentos espaciales', '4', 'Nave tripulada', 'Combustion quimica', 'Orbita baja', NULL, NULL, NULL),
-	(10, 10, 'Analie', 'Incrementar conocimientos', '1', 'Nave Sofkiana', 'Celdas fotoneuronales', 'El límite es el cielo', NULL, '"A medio camino"', NULL),
-	(11, 11, 'Albert Einstein', 'Incrementar conocimientos', '1', 'Nave Sofkiana', 'Celdas fotoneuronales', 'El límite es el cielo', NULL, '"Espera los resultados"', NULL),
-	(12, 12, 'Tesla', 'Incrementar conocimientos', '1', 'Nave Sofkiana', 'Celdas fotoneuronales', 'El límite es el cielo', NULL, '"Apenas comienzas"', NULL);
-/;
+INSERT INTO `naves_config` (`id_registro`, `nombre`, `mision`, `tripulacion`, `tipo`, `combustible`, `distancia`, `planetas`, `quiz`, `carga`) VALUES
+	(1, 'Orion', 'Estudio de cuerpos celestes', NULL, 'Nave no tripulada', 'Celdas fotovoltaicas', 'Cada vez más lejos', 'Sí', NULL, NULL),
+	(2, 'Sonda Cass', 'Estudio de cuerpos celestes', NULL, 'Nave no tripulada', 'Celdas fotovoltaicas', 'Cada vez más lejos', 'No', NULL, NULL),
+	(3, 'Bruno', 'Estudio de cuerpos celestes', NULL, 'Nave no tripulada', 'Celdas fotovoltaicas', 'Cada vez más lejos', 'Sí', NULL, NULL),
+	(4,  'SunShine', 'Lanzar carga', NULL, 'Vehiculo lanzadera', 'Combustion quimica', 'Orbita baja', NULL, NULL, 'Satelite'),
+	(5,  'Roosette', 'Lanzar carga', NULL, 'Vehiculo lanzadera', 'Combustion quimica', 'Orbita baja', NULL, NULL, 'Sonda'),
+	(6,  'CrispStation', 'Lanzar carga', NULL, 'Vehiculo lanzadera', 'Combustion quimica', 'Orbita baja', NULL, NULL, 'Nave'),
+	(7,  'HumanPropulsor', 'Experimentos espaciales', '5', 'Nave tripulada', 'Combustion quimica', 'Orbita baja', NULL, NULL, NULL),
+	(8,  'Infinite', 'Experimentos espaciales', '2', 'Nave tripulada', 'Combustion quimica', 'Orbita baja', NULL, NULL, NULL),
+	(9,  'Orianna', 'Experimentos espaciales', '4', 'Nave tripulada', 'Combustion quimica', 'Orbita baja', NULL, NULL, NULL),
+	(10, 'Analie', 'Incrementar conocimientos', '1', 'Nave Sofkiana', 'Celdas fotoneuronales', 'El límite es el cielo', NULL, '"A medio camino"', NULL),
+	(11,  'Albert Einstein', 'Incrementar conocimientos', '1', 'Nave Sofkiana', 'Celdas fotoneuronales', 'El límite es el cielo', NULL, '"Espera los resultados"', NULL),
+	(12,  'Tesla', 'Incrementar conocimientos', '1', 'Nave Sofkiana', 'Celdas fotoneuronales', 'El límite es el cielo', NULL, '"Apenas comienzas"', NULL);
+
 
 
