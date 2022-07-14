@@ -64,3 +64,12 @@ Para ejecutar el proyecto en tu máquina local para propósitos de desarrollo y 
 
 $ cd ./Sofka<br/>
 $ npm run dev <br/>
+
+### Diagrama ER
+
+![Diagrama entidad relación de DB](https://github.com/AnalieFS/Sofka/blob/main/assets/ERDDiagram1.png)
+
+### Diagrama de clases
+
+![Diagrama de clases](https://github.com/AnalieFS/Sofka/blob/main/assets/relacionados.png)
+
