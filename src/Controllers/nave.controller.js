@@ -27,11 +27,11 @@ controller.postNave = (req, res) => {
   switch (crearNave.tipo) {
     case "Nave no tripulada": {
       crearNave.planetas = req.body.planetas;
-      crearNave.quiz =""
+      crearNave.quiz = "";
     }
     case "Vehiculo lanzadera": {
       crearNave.carga = req.body.carga;
-      crearNave.quiz =""
+      crearNave.quiz = "";
     }
     case "Nave Sofkiana": {
       let Sofkiana = new NaveSofkiana(
@@ -91,13 +91,17 @@ controller.getByName = (req, res) => {
   const name = Object.values(getName);
   //Estableciendo conexión
   req.getConnection((err, conn) => {
-    conn.query("SELECT * FROM naves WHERE nombre=?", name, (err, naves) => {
-      if (err) {
-        res.json(err);
+    conn.query(
+      "SELECT * FROM naves_config WHERE nombre=?",
+      name,
+      (err, naves) => {
+        if (err) {
+          res.json(err);
+        }
+        //si la query es exitosa retorna la nave
+        res.json(naves);
       }
-      //si la query es exitosa retorna la nave
-      res.json(naves);
-    });
+    );
     if (err) {
       res.json({ message: err || "Ha ocurrido un error con la búsqueda" });
     }
@@ -108,15 +112,39 @@ controller.getByFilter = (req, res) => {
   const filter = req.query;
   const keys = Object.keys(filter);
   const values = Object.values(filter);
+  console.log(keys);
 
   query = "SELECT * FROM naves_config WHERE ";
 
-  //Se recorren los valores del filtro para ingresarlos en la búsqueda
-  for (let i = 0; i < values.length; i++) {
-    if (i < values.length - 1)
-      query = query + `${keys[i]} = "${values[i]}" AND `;
-    else query = query + `${keys[i]} = "${values[i]}"`;
+  /*
+A continuación se crea la query que va a consultar la DB,
+para ello se debe tener en cuenta que una llave puede tener
+más de un valor si el filtro de búsqueda quiere, por ejemplo,
+seleccionar todas la naves "tipo=Vehiculo lanzadera" y 
+"tipo=Nave no tripulada", por lo cual se consulta si la longitud
+de los valores es mayor a 1 y se condiciona a que no sea un 
+string debido a que su valor es mayor de 1 pero se recorrería la 
+palabra más no un vector (vease 1), si el valor por llave no es 
+más de 1 entonces ingresa la llave y su valor a la query con 
+normalidad (vease 2)
+*/
+
+  for (let i = 0; i < keys.length; i++) {
+    // (1)
+    if (values[i].length > 1 && typeof values[i] !== "string") {
+      for (let j = 0; j < values[i].length; j++) {
+        if (i === 0 && j === 0) {
+          query = query + `${keys[i]}="${values[i][j]}"`;
+        } else {
+          query = query + ` OR ${keys[i]} = "${values[i][j]}"`;
+        }
+      }
+    }
+    // (2)
+    else if (i === 0) query = query + `${keys[i]} = "${values[i]}"`;
+    else query = query + ` OR ${keys[i]} = "${values[i]}"`;
   }
+
   req.getConnection((err, conn) => {
     conn.query(query, (err, naves) => {
       if (err) {

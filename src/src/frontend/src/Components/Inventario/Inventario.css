@@ -13,14 +13,27 @@
 }
 
 .filterContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width : 90%;
-    height: 150px;
+    height: fit-content;
     background-color: rgb(61, 61, 61);
     border-radius: 24px;
     margin-top: 50px;
 }
 
+
+.ContainerFiltros{
+ display: flex;
+ flex-direction: row;
+ flex-wrap: wrap;
+ justify-content: flex-start;
+ margin-left: 20px;
+}
+
 .Tabla{
+    display: flex;
     width : 90%;
     height: fit-content;
     background-color: rgb(61, 61, 61);
@@ -28,4 +41,142 @@
     margin-top: 50px;
     margin-bottom: 50px;
     overflow-x: auto;
+    justify-content: center;
+}
+
+#filtroItem{
+    display: flex;
+    width: 20%;
+    color: white;
+    font-size: 0.8rem;
+    flex-direction: row;
+}
+
+#FiltrosTitle{
+    color:rgb(255, 218, 95);
+    font-size: 1rem;
+}
+
+.FiltrarButton{
+    display: flex;
+    width:100px;
+    height: 30px;
+    border : 2px solid rgb(255, 218, 95);
+    cursor: pointer;
+    transition-duration: 0.5s;
+    font-size: 0.9rem;
+    margin: 15px 0px 25px 0px;
+}
+
+.FiltrarButton:hover, .FiltrarButton:focus, .FiltrarButton:active{
+    background-color: rgb(36, 36, 36);
+    width:90px;
+}
+
+.FiltrarButton h3{
+    color:rgb(255, 218, 95);
+    text-align: center;
+    margin: auto;
+    font-weight: 600;
+}
+
+.LittleFormContainer{
+    display: flex;
+    width: 100%;
+    margin:20px;
+    justify-content: space-around;
+}
+
+.LittleFormContainer input[type=text]{
+    text-align: center;
+    width:30%;
+    outline: none;
+    background-color:transparent;
+    border: 2px solid white;
+    color: white;
+    height: 30px;
+
+}
+
+.LittleFormContainer input[type=submit]{
+    display: flex;
+    width:100px;
+    height: 35px;
+    border : 2px solid rgb(255, 218, 95);
+    cursor: pointer;
+    transition-duration: 0.5s;
+    font-size: 0.9rem;
+    background-color: transparent;
+    color:rgb(255, 218, 95);
+    justify-content: center;
+    font-weight: 600;
+    margin: 0px 30px
+
+}
+
+.LittleFormContainer input[type=submit]:hover, .LittleFormContainer input[type=submit]:focus, .LittleFormContainer input[type=submit]:active{
+    background-color: rgb(36, 36, 36);
+    width:90px;
+}
+
+
+#LittleFormStyle{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 80%;
+}
+
+#busqueda{
+    color:rgb(255, 218, 95);
+    animation: moveIcon 15s infinite;
+    ;
+}
+
+#cerrarBusqueda{
+    color:rgb(255, 218, 95);
+}
+
+@keyframes moveIcon {
+    3%{
+        transform: rotate(-45deg);
+    }
+    6%{
+        transform: rotate(45deg);
+    }
+    9%{
+        transform: rotate(0deg);
+    }
+    100%{
+
+    }
+    
+}
+.TablaStyles{
+    width: 95%;
+    padding: 20px;
+}
+#trStyles{
+    
+    width: 100%;
+    background-color: rgba(42, 43, 44, 0.568);
+    margin: 0px;
+}
+
+#trStyles td{
+    color:rgb(255, 218, 95);
+text-align: center;
+padding: 0px 5px;
+}
+
+.Results{
+    margin: 5px 0px;
+}
+.Results td{
+    overflow: hidden;
+    background-color: rgba(240, 248, 255, 0.089);
+    color:rgb(187, 175, 134);
+    margin:5px 0px;
+    text-align: center;
+    font-size: .9rem;
 }
