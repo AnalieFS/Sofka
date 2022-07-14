@@ -5,8 +5,11 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon ./src/app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server" : "node ./src/app.js",
+    "client" : "npm start --prefix ./src/src/frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+    },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -19,5 +22,8 @@
     "mysql": "^2.18.1",
     "mysql2": "^2.3.3",
     "nodemon": "^2.0.19"
+  },
+  "devDependencies": {
+    "concurrently": "^7.2.2"
   }
 }

@@ -14,9 +14,9 @@ app.set('port', process.env.PORT || 5000);
 app.use(cors());
 app.use(morgan("dev"));
 app.use(conn(mysql, {
-    host : "0.0.0.0",
-    user : "otro",
-    password : "123456",
+    host : "localhost",
+    user : "root",
+    password : "1234",
     port : 3306,
     database : "sofkaspacestation"
 }, "single"));
