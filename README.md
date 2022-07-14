@@ -60,7 +60,7 @@ $ npm i <br/>
 
 ### Ejecución 📝
 
-Para ejecutar el proyecto en la máquina local y ejecutar pruebas se utiliza el módulo 'concurrently' que nos permite para versión de desarrollo ejecutar el backend y el frontend simultaneamente para ello se deben ejecutar los siguientes comandos en consola: <br/>
+Para ejecutar el proyecto en tu máquina local para propósitos de desarrollo y pruebas se utiliza el módulo 'concurrently' que nos permite ejecutar el backend y el frontend simultaneamente, para ello se deben ejecutar los siguientes comandos en consola (Recuerda instalar los módulos): <br/>
 
 $ cd ./Sofka<br/>
 $ npm run dev <br/>
