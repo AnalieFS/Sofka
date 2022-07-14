@@ -127,7 +127,7 @@ handleSubmit = (e) => {
 
 inventario = () =>{
   if(this.state.nombre.length>0){
-    if(window.confirm("No has creado aún tu nave, ¿Deseas abandonar la página?")==true){
+    if(window.confirm("No has creado aún tu nave, ¿Deseas abandonar la página?")===true){
       window.location.href="/Inventario"; 
     }
   }else{
