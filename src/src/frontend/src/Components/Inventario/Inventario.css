@@ -251,3 +251,20 @@ color: rgb(255, 218, 95);
     margin-top: 20px;
     font-weight: 500;
 }
+
+.Inventario{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Formating h1{
+    color:rgb(255, 218, 95);
+    font-size:1.5rem;
+}
+
+.Formating h2{
+    color:white;
+    font-size:1rem;
+    margin-bottom: 22px;
+}
