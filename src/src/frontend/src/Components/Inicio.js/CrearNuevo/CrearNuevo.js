@@ -35,7 +35,7 @@ function detalleMision(res){
 
 function jsonRequest(nombre, mision, accion){
   if(mision ==="Lanzar carga"){
-    return {"nombre":nombre, "mision" : mision, "tripulacion":"0", "carga":accion}
+    return {"nombre":nombre, "mision" : mision, "tripulacion":"0", "carga":accion, "quiz": "N/A"}
   }
   else if(mision === "Experimentos espaciales"){
     return {"nombre":nombre, "mision" : mision, "tripulacion":accion}
@@ -44,7 +44,7 @@ function jsonRequest(nombre, mision, accion){
     return {"nombre":nombre, "mision" : mision, "tripulacion":"1", "quiz":accion}
   }
   else{
-    return {"nombre":nombre, "mision" : mision, "tripulacion":"0", "planetas":accion}
+    return {"nombre":nombre, "mision" : mision, "tripulacion":"0", "planetas":accion, "quiz":"N/A"}
   }
 };
 
@@ -109,6 +109,7 @@ handleButton = (e) =>{
 handleSubmit = (e) => {
   e.preventDefault();
   let query = jsonRequest(this.state.nombre, this.state.misionSelected, this.state.accionSelected)
+  console.log(query)
   const requestOptions = {
     method : 'POST',
     headers : { 'Content-Type':'application/json'},
@@ -116,7 +117,16 @@ handleSubmit = (e) => {
   };
   fetch("http://localhost:5000/nave", requestOptions)
   .then(response => response.json())
-  .then(data => console.log(data))
+  .then(data => {
+    if(data){
+      window.alert("Nave creada con éxito");
+      window.location.href="/Inventario";      
+    }
+  })
+}
+
+inventario = () =>{
+  window.location.href="/Inventario";      
 }
 
   render() {
@@ -124,7 +134,7 @@ handleSubmit = (e) => {
       <div className="CrearNuevoContainer">
         <div className="FormBanner"></div>
         <div className="FormContainer">
-            <div className="inventarioButton"><h3>Ver inventario</h3></div>
+            <div className="inventarioButton" onClick={this.inventario}><h3>Ver inventario</h3></div>
           <h1>ESTACIÓN ESPACIAL SOFKA</h1>
           <h2>¡Bienvenido a la fábrica de creación de naves!</h2>
           <p>

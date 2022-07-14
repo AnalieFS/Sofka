@@ -6,7 +6,7 @@ const controller = {};
 controller.getAll = (req, res) => {
   //Estableciendo conexión
   req.getConnection((err, conn) => {
-    conn.query("SELECT * FROM naves", (err, naves) => {
+    conn.query("SELECT * FROM naves_config", (err, naves) => {
       if (err) {
         res.json(err);
       }
@@ -27,9 +27,11 @@ controller.postNave = (req, res) => {
   switch (crearNave.tipo) {
     case "Nave no tripulada": {
       crearNave.planetas = req.body.planetas;
+      crearNave.quiz =""
     }
     case "Vehiculo lanzadera": {
       crearNave.carga = req.body.carga;
+      crearNave.quiz =""
     }
     case "Nave Sofkiana": {
       let Sofkiana = new NaveSofkiana(
