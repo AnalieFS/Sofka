@@ -30,6 +30,8 @@ module.exports = class VehiculoLanzadera extends NavesInterfaz{
     set carga(carga){
         this._carga = carga;
     }
+    
+    //Sobreescribiendo métodos heredados de clase padre
 
     combustible(){
         return "Combustion quimica";

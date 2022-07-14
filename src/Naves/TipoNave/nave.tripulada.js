@@ -31,6 +31,8 @@ module.exports = class NaveTripulada extends NavesInterfaz{
         this._tripulacion = tripulacion;
     }
 
+    //Sobreescribiendo métodos heredados de clase padre
+
     combustible(){
         return "Combustion quimica";
     }

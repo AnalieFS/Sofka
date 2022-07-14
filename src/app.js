@@ -13,6 +13,7 @@ app.set('port', process.env.PORT || 5000);
 //Middlewares
 app.use(cors());
 app.use(morgan("dev"));
+//DATOS DE INGRESO AL SERVIDOR DE LA DB !!!IMPORTANTE!!!
 app.use(conn(mysql, {
     host : "0.0.0.0",
     user : "otro",
@@ -20,6 +21,7 @@ app.use(conn(mysql, {
     port : 3306,
     database : "sofkaspacestation"
 }, "single"));
+
 app.use(express.json());
 
 //Routes
@@ -28,5 +30,5 @@ app.use("/", naveRoutes);
 
 //Iniciando server
 app.listen(app.get('port'), () => {
-    console.log("Server on address http://localhost:"+3000);
+    console.log("Server on address http://localhost:"+5000);
 });

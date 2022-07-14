@@ -31,7 +31,7 @@ module.exports = class NaveNoTripulada extends NavesInterfaz{
     set mision(mision){
         this._mision = mision;
     }
-
+    //Sobreescribiendo métodos heredados de clase padre
     combustible(){
         return "Celdas fotovoltaicas";
     }
@@ -43,7 +43,7 @@ module.exports = class NaveNoTripulada extends NavesInterfaz{
     tipo(){
         return "Nave no tripulada";
     }
-
+    //Métodos abstractos exlusivos de esta nave
     visitarPlaneta(){};
 
     abandonarPlaneta(){};

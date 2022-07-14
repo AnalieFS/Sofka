@@ -40,7 +40,7 @@ export default class CrearNuevo extends Component {
     }
     else if (res === "Incrementar conocimientos") {
       let acciones = [1, 2, 3];
-      let text = "¿Cuántos exámenes has presentado?"
+      let text = "¡Es la nave Sofka! ¿Cuántas pruebas has presentado?"
       return [acciones, text];
     }
     else if (res === "Lanzar carga") {
@@ -65,7 +65,7 @@ export default class CrearNuevo extends Component {
       return { "nombre": nombre, "mision": mision, "tripulacion": accion }
     }
     else if (mision === "Incrementar conocimientos") {
-      return { "nombre": nombre, "mision": mision, "tripulacion": "1", "quiz": accion }
+      return { "nombre": nombre, "mision": mision, "tripulacion": "1", "quiz": parseInt(accion) }
     }
     else {
       return { "nombre": nombre, "mision": mision, "tripulacion": "0", "planetas": accion, "quiz": "N/A" }
@@ -76,7 +76,7 @@ export default class CrearNuevo extends Component {
   handleName = (e) => {
     let name = e.target.value;
     this.setState({ nombre: name });
-    if (name.length > 2) {
+    if (name.length > 1) {
       fetch(`http://localhost:5000/nombre?nombre=${name}`)
         .then((response) => response.json())
         .then((data) => {
@@ -85,8 +85,9 @@ export default class CrearNuevo extends Component {
             this.setState({ showTripulacion: true })
           }
           else {
-            this.setState({ nombre: this.state.nombre+"1" }) //Si el nombre existe le agrega un 1 para que se pueda crear uno similar
-            window.alert("Ya tenemos una nave con ese nombre, ¿y si le ponemos un `1`?") //Lanza la alerta de que el nombre existe y no puede ser usado
+            let random = Math.floor(Math.random() * 111994);
+            this.setState({ nombre: this.state.nombre + `${random}` }); //Si el nombre existe le agrega un 1 para que se pueda crear uno similar
+            window.alert(`Ya tenemos una nave con ese nombre, ¡tranquil@!, lo autocompletamos por ti`);//Lanza la alerta de que el nombre existe y no puede ser usado
           }
         });
     }
@@ -118,7 +119,7 @@ export default class CrearNuevo extends Component {
   //maneja el envío del formulario
   handleSubmit = (e) => {
     e.preventDefault(); //Evita que se recarge la página
-    
+
     let query = this.jsonRequest(this.state.nombre, this.state.misionSelected, this.state.accionSelected) //Asigna a query el resultado de la función jsonRequest
 
     //Se crea una variable que almacena el formato a usar en el fetch con la base de datos
@@ -138,7 +139,7 @@ export default class CrearNuevo extends Component {
           window.location.href = "/Inventario";
         }
       }).catch((e) => { if (e) { window.alert("Parece que nos faltan mecánicos, ha ocurrido un error con la creación") } } //Manejo de errores
-      ) 
+      )
   }
 
   //Pregunta al usuario dado el caso en que haya diligenciado nombre si desea abandonar la página para ir a inventario
@@ -161,19 +162,19 @@ export default class CrearNuevo extends Component {
           <h1>ESTACIÓN ESPACIAL SOFKA</h1>
           <h2>¡Bienvenido a la fábrica de creación de naves!</h2>
           <p>
-            Para crear una nueva nave que cumpla tus características envía
-            completamente diligenciado el formulario, de lo contrario, si
-            quieres ver nuestro inventario de naves presiona "ver inventario"
+            Para crear una nueva nave que cumpla tus características responde las siguientes preguntas, de lo contrario, si
+            lo que quieres es ver nuestro inventario de naves presiona "ver inventario"
           </p>
           <br />
           <form className="Form" onSubmit={this.handleSubmit}>
-            <label>Ponle un nombre a tu nave (Mínimo 3 letras)</label>
+            <label>Ponle un nombre a tu nave (Mínimo 3 carácteres)</label>
             <input
               type="text"
               name="name"
               autoComplete="off"
               onChange={this.handleName}
               value={this.state.nombre}
+              minLength={3}
             />
             {this.state.showTripulacion && <label>¿Tu nave lleva tripulación?</label>}
             {this.state.showTripulacion && <select onClick={this.handleChange}>

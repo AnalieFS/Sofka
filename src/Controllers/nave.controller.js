@@ -3,6 +3,8 @@ const NaveSofkiana = require("../Naves/TipoNave/nave.sofkiana");
 
 const controller = {};
 
+
+//CONTROLADOR ENCARGADO DE CARGAR TODOS LOS RESULTADOS DE LA TABLA
 controller.getAll = (req, res) => {
   //Estableciendo conexión
   req.getConnection((err, conn) => {
@@ -18,6 +20,8 @@ controller.getAll = (req, res) => {
   });
 };
 
+
+//CONTROLADOR ENCARGADO DE INGRESAR LA NUEVA NAVE A LAS TABLAS
 controller.postNave = (req, res) => {
   //Creación de objeto nave y obtención de su tipo según características
   let nave = new Naves(req.body.nombre, req.body.mision, req.body.tripulacion);
@@ -86,6 +90,8 @@ controller.postNave = (req, res) => {
   });
 };
 
+
+//CONTROLADOR ENCARGADO DE OBTENER LA NAVE POR SU NOMBRE
 controller.getByName = (req, res) => {
   const getName = req.query;
   const name = Object.values(getName);
@@ -108,6 +114,8 @@ controller.getByName = (req, res) => {
   });
 };
 
+
+//CONTROLADOR ENCARGADO DE GESTIONAR EL FILTRO AVANZADO
 controller.getByFilter = (req, res) => {
   const filter = req.query;
   const keys = Object.keys(filter);

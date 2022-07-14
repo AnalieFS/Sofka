@@ -45,9 +45,9 @@ CREATE TABLE IF NOT EXISTS `naves_config` (
 
 -- Volcando datos para la tabla sofkaspacestation.naves_config: ~12 rows (aproximadamente)
 INSERT INTO `naves_config` (`id_registro`, `id_nave`, `nombre`, `mision`, `tripulacion`, `tipo`, `combustible`, `distancia`, `planetas`, `quiz`, `carga`) VALUES
-	(1, 1, 'Orion', 'Estudio de cuerpos celestes', NULL, 'Nave no tripulada', 'Celdas fotovoltaicas', 'Cada vez más lejos', 'true', NULL, NULL),
-	(2, 2, 'Sonda Cass', 'Estudio de cuerpos celestes', NULL, 'Nave no tripulada', 'Celdas fotovoltaicas', 'Cada vez más lejos', 'false', NULL, NULL),
-	(3, 3, 'Bruno', 'Estudio de cuerpos celestes', NULL, 'Nave no tripulada', 'Celdas fotovoltaicas', 'Cada vez más lejos', 'false', NULL, NULL),
+	(1, 1, 'Orion', 'Estudio de cuerpos celestes', NULL, 'Nave no tripulada', 'Celdas fotovoltaicas', 'Cada vez más lejos', 'Sí', NULL, NULL),
+	(2, 2, 'Sonda Cass', 'Estudio de cuerpos celestes', NULL, 'Nave no tripulada', 'Celdas fotovoltaicas', 'Cada vez más lejos', 'No', NULL, NULL),
+	(3, 3, 'Bruno', 'Estudio de cuerpos celestes', NULL, 'Nave no tripulada', 'Celdas fotovoltaicas', 'Cada vez más lejos', 'Sí', NULL, NULL),
 	(4, 4, 'SunShine', 'Lanzar carga', NULL, 'Vehiculo lanzadera', 'Combustion quimica', 'Orbita baja', NULL, NULL, 'Satelite'),
 	(5, 5, 'Roosette', 'Lanzar carga', NULL, 'Vehiculo lanzadera', 'Combustion quimica', 'Orbita baja', NULL, NULL, 'Sonda'),
 	(6, 6, 'CrispStation', 'Lanzar carga', NULL, 'Vehiculo lanzadera', 'Combustion quimica', 'Orbita baja', NULL, NULL, 'Nave'),

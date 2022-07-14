@@ -41,6 +41,8 @@ module.exports = class NaveSofkiana extends NavesInterfaz{
         this._tripulacion = tripulacion;
     }
 
+    //Sobreescribiendo métodos heredados de clase padre
+
     combustible(){
         return "Celdas fotoneuronales";
     }
@@ -53,6 +55,7 @@ module.exports = class NaveSofkiana extends NavesInterfaz{
         return "Nave Sofkiana";
     }
 
+    //Método que verifica según la cantidad de exámenes presentados que tan cerca está de entrar a la nave Sofka
     probabilidadEntrada(){
         switch(this._quizNumber){
             case 1 : return "Apenas comienzas"
