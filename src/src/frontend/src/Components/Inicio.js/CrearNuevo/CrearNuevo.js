@@ -126,7 +126,13 @@ handleSubmit = (e) => {
 }
 
 inventario = () =>{
-  window.location.href="/Inventario";      
+  if(this.state.nombre.length>0){
+    if(window.confirm("No has creado aún tu nave, ¿Deseas abandonar la página?")==true){
+      window.location.href="/Inventario"; 
+    }
+  }else{
+  window.location.href="/Inventario"; 
+}     
 }
 
   render() {

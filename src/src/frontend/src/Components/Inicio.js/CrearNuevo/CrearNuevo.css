@@ -13,7 +13,7 @@
     width: 50%;
     height: 80vh;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start
    }
 
 .FormBanner{
@@ -48,8 +48,8 @@
     position: absolute;
     width:130px;
     height: 40px;
-    top:2%;
-    border : 1px solid rgb(255, 218, 95);
+    bottom: 60px;
+    border : 2px solid rgb(255, 218, 95);
     cursor: default;
     transition-duration: 0.5s;
     font-size: 0.9rem;
@@ -65,7 +65,7 @@
     color:rgb(255, 218, 95);
     text-align: center;
     margin: auto;
-    font-weight: 100;
+    font-weight: 600;
 }
 .FormContainer p{
     color : white;
@@ -98,10 +98,11 @@
     width:130px;
     height: 50px;
     font-size: 0.9rem;
-    border : 1px solid rgb(255, 218, 95);
+    border : 2px solid rgb(255, 218, 95);
     background-color: black;
     color: rgb(255, 218, 95);
     transition-duration: 0.5s;
+    font-weight: 600;
 }
 
 .Form input[type=text]{

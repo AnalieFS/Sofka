@@ -2,6 +2,8 @@ import { Component } from "react";
 import "./Inventario.css";
 import { FaSearchengin } from "react-icons/fa";
 import { MdOutlineSearchOff } from "react-icons/md";
+import {FiRefreshCcw} from "react-icons/fi";
+import rocket from './1.png';
 
 export default class Inventario extends Component {
   constructor() {
@@ -15,6 +17,8 @@ export default class Inventario extends Component {
     result: [],
     filtro: [],
     showFilters: false,
+    refresh : false,
+    lastRocket : []
   };
 
   initialData = () => {
@@ -22,12 +26,12 @@ export default class Inventario extends Component {
       .then((response) => response.json())
       .then((data) => {
         this.setState({ result: data });
+        this.setState({ lastRocket : [data[data.length-1]]})
       });
-  };
+    };
 
   handleName = (e) => {
     let name = e.target.value;
-
     this.setState({ nombre: name });
   };
 
@@ -40,6 +44,9 @@ export default class Inventario extends Component {
         .then((data) => {
           if (data.length !== 0) {
             this.setState({ result: [data[0]] });
+            this.setState({ nombre: "" });
+            this.setState({refresh : true})
+
           } else {
             this.setState({ result: "no existe" });
             this.setState({ nombre: "" });
@@ -94,9 +101,34 @@ export default class Inventario extends Component {
     }
   };
 
+refreshResults = () =>{
+  this.initialData();
+  this.setState({refresh : false})
+}
+
+crearCohete = () =>{
+  window.location.href="/";      
+}
+
   render() {
     return (
       <div className="InventarioContenedor">
+      
+        <div className="UltimoCoheteAgregadoContenedor">
+        <div id="Sticker">
+          <img src={rocket} alt="Rocket"></img>
+        </div>
+        {this.state.lastRocket.map((nave, index) => {
+                return (
+                  <tr key={index} className="LastRocket">
+                    <h1>Último cohete construido</h1>
+                    <div id="BoxElement"><h2>Nombre</h2><td>{nave.nombre}</td></div>
+                    <div id="BoxElement"><h2>Mision</h2><td>{nave.mision}</td></div>
+                    <div id="BoxElement"><h2>Tipo de nave</h2><td>{nave.tipo}</td></div>
+                  </tr>
+                );
+              })}
+        </div>
         <div className="filterContainer">
           <div className="LittleFormContainer">
             <form id="LittleFormStyle" onSubmit={this.filterByName}>
@@ -109,6 +141,10 @@ export default class Inventario extends Component {
                 placeholder="Nombre de la nave"
               />
               <input type="submit" value="BUSCAR"></input>
+              <div className="FiltrarButton Crear" onClick={this.crearCohete}>
+              <h3>CREAR NUEVO</h3>
+            </div>
+              {this.state.refresh&&<FiRefreshCcw size={"2em"} id="refresh" onClick={this.refreshResults}></FiRefreshCcw>}
             </form>
             <div onClick={this.showListFilters}>
               {!this.state.showFilters && (
@@ -250,6 +286,7 @@ export default class Inventario extends Component {
             </div>
           )}
         </div>
+        <h1 id="InventarioCohetesTitle">Inventario de cohetes</h1>
         <div className="Tabla">
           <table className="TablaStyles">
             <tbody>
