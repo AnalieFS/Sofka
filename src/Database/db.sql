@@ -9,8 +9,9 @@ CREATE TABLE IF NOT EXISTS `naves` (
   `mision` varchar(50) NOT NULL DEFAULT '0',
   `tipo` varchar(50) NOT NULL DEFAULT '0',
   `tripulacion` varchar(50) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id_nave`)
-) ;
+  PRIMARY KEY (`id_nave`),
+  UNIQUE KEY `nombre` (`nombre`)
+);
 
 -- Volcando datos para la tabla sofkaspacestation.naves: ~0 rows (aproximadamente)
 INSERT INTO `naves` (`id_nave`, `nombre`, `mision`, `tipo`, `tripulacion`) VALUES
@@ -30,7 +31,6 @@ INSERT INTO `naves` (`id_nave`, `nombre`, `mision`, `tipo`, `tripulacion`) VALUE
 -- Volcando estructura para tabla sofkaspacestation.naves_config
 CREATE TABLE IF NOT EXISTS `naves_config` (
   `id_registro` int(11) NOT NULL AUTO_INCREMENT,
-  `id_nave` int(11) NOT NULL DEFAULT 0,
   `nombre` varchar(50) NOT NULL DEFAULT '0',
   `mision` varchar(100) NOT NULL DEFAULT '0',
   `tripulacion` varchar(50) DEFAULT NULL,
@@ -40,8 +40,7 @@ CREATE TABLE IF NOT EXISTS `naves_config` (
   `planetas` varchar(50) DEFAULT NULL,
   `quiz` varchar(50) DEFAULT NULL,
   `carga` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id_registro`),
-  UNIQUE KEY `id_nave` (`id_nave`)
+  PRIMARY KEY (`id_registro`)
 );
 
 -- Volcando datos para la tabla sofkaspacestation.naves_config: ~12 rows (aproximadamente)
