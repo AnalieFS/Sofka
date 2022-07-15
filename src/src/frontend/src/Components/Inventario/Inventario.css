@@ -256,6 +256,7 @@ color: rgb(255, 218, 95);
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 90%;
 }
 
 .Formating h1{

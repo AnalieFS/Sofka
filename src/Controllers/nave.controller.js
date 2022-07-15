@@ -120,9 +120,8 @@ controller.getByFilter = (req, res) => {
   const filter = req.query;
   const keys = Object.keys(filter);
   const values = Object.values(filter);
-  console.log(keys);
 
-  query = "SELECT * FROM naves_config WHERE ";
+  let query = "SELECT * FROM naves_config WHERE ";
 
   /*
 A continuación se crea la query que va a consultar la DB,
