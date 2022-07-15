@@ -16,6 +16,12 @@ Encuentra las instrucciones de instalación según tu sistema operativo aquí</a
 </code>
 </pre>
 
+<pre>
+<code>Comando en terminal
+npm install npm@latest -g
+</code>
+</pre>
+
 
 <pre>
 <code>MySQL
